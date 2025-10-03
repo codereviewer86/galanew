@@ -1,6 +1,8 @@
 # Build stage
 FROM node:20-alpine as build
 
+ARG VITE_API_BASE_URL
+
 # Set working directory
 WORKDIR /app
 
@@ -15,7 +17,7 @@ COPY . .
 COPY .env .env
 
 # Build the app
-RUN npm run build
+RUN VITE_API_BASE_URL=$VITE_API_BASE_URL npm run build
 
 # Production stage
 FROM nginx:alpine
