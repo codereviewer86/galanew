@@ -21,7 +21,21 @@ import EmailRoute from './routes/email.route';
 const app: express.Application = express();
 
 function initializeMiddlewares() {
-  app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
+  const allowedOrigins = ORIGIN ? ORIGIN.split(',') : [];
+  const corsOptions = {
+    origin: (origin, callback) => {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: CREDENTIALS,
+  };
+
+  app.use(cors(corsOptions));
   app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" }
   }));
