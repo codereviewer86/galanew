@@ -13,6 +13,7 @@ services:
       - ./Turkmen-gala-apis/uploads:/app/uploads
     environment:
       - DATABASE_URL=postgresql://neondb_owner:npg_z1jsbUcT7Pdp@ep-twilight-haze-aehcj9za-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+      - ORIGIN=http://72.60.202.55:5001,http://72.60.202.55:5002
     networks:
       - turkmen-network
 
