@@ -1,7 +1,11 @@
+version: '3.8'
+
 services:
   # Backend API Service
   api:
-    image: dockercodereview/gala:api-latest
+    build:
+      context: ./apis
+      dockerfile: Dockerfile
     container_name: turkmen-api
     restart: unless-stopped
     ports:
@@ -16,7 +20,9 @@ services:
 
   # Frontend Website Service
   website:
-    image: dockercodereview/gala:website-latest
+    build:
+      context: ./site
+      dockerfile: Dockerfile
     container_name: turkmen-website
     restart: unless-stopped
     ports:
@@ -28,7 +34,9 @@ services:
 
   # CMS Service
   cms:
-    image: dockercodereview/gala:cms-latest
+    build:
+      context: ./cms
+      dockerfile: Dockerfile
     container_name: turkmen-cms
     restart: unless-stopped
     ports:
