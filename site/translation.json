@@ -1,0 +1,30 @@
+{
+  "en": {
+    "reliable": {
+        "title": "Reliable Innovative Partner For your Assets",
+        "description": "Turkmen Gala has been providing a wide range of services, products, and innovative technologies for over 13 years. Our objective is to implement advanced technologies and strategically tailor targeted solutions within the Turkmenistan region as a national company, in harmony with the country's development goals and objectives."
+    },
+    "statistics": {
+      "yearsOfServiceNumber": "13+",
+      "yearsOfService": "Number of Years in Service",
+      "internationalPartnersNumber": "37+",
+      "internationalPartners": "Number of International Partners",
+      "employeesNumber": "110+",
+      "employees": "Number of Employees"
+    }
+  },
+  "ru": {
+    "reliable": {
+        "title": "Nadezhnyy innovatsionnyy partner dlya vashikh aktivov",
+        "description": "Kompaniya «Turkmen Gala» uzhe boleye 13 let predostavlyayet shirokiy spektr uslug, produktsii i innovatsionnykh tekhnologiy. Nasha tsel' — vnedreniye peredovykh tekhnologiy i razrabotka strategicheskikh tselevykh resheniy v regione Turkmenistana v kachestve natsional'noy kompanii, garmoniruyushchey s tselyami i zadachami razvitiya strany."
+    },
+    "statistics": {
+      "yearsOfServiceNumber": "13+",
+      "yearsOfService": "Kolichestvo let obsluzhivaniya",
+      "internationalPartnersNumber": "37+",
+      "internationalPartners": "Kolichestvo mezhdunarodnykh partnerov",
+      "employeesNumber": "110+",
+      "employees": "Kolichestvo sotrudnikov"
+    }
+  }
+}

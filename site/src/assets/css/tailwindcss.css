@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* home page */
+
+.homepage-container {
+  .banner  {
+    .carousel-inner {
+      height: 80vh;
+    }
+  }
+
+  .banner {
+    .carousel-item {
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  .multi-carousel2 {
+    .service-box {
+      border-radius: 10px;
+      outline: 1px solid #ddd;
+    }
+
+    .arrow-hover {
+      width: 100%;
+      bottom: 0px;
+      background: #fff;
+      color: #000;
+      border-radius: 0px 0px 5px 5px;
+      padding: 18px 0px 12px;
+      transition: all 0.3s ease-in-out;
+      margin: auto;
+      outline: 0.5px solid #ddd;
+    }
+  }
+}
+
+.title-sm {
+  @apply text-xl font-semibold;
+}
+
+.heading-box {
+  @apply mb-6 md:mb-8;
+}

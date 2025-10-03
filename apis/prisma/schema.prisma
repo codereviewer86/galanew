@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  engineType    = "library"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "debian-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SectorType {
+  ENERGY
+  INFRA
+}
+
+model User {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SectorItem {
+  id            Int                 @id @default(autoincrement())
+  img           String
+  label         String
+  labelRu       String?
+  description   String?
+  descriptionRu String?
+  type          SectorType          @default(ENERGY)
+  services      SectorItemService[]
+}
+
+model SectorItemService {
+  id           Int                        @id @default(autoincrement())
+  img          String
+  brandLogo    String?
+  label        String
+  labelRu      String?
+  description  String?
+  descriptionRu String?
+  sectorItemId Int
+  sectorItem   SectorItem                 @relation(fields: [sectorItemId], references: [id])
+  details      SectorItemServiceDetails[]
+}
+
+model SectorItemServiceDetails {
+  id                  Int               @id @default(autoincrement())
+  title               String
+  titleRu            String?
+  description         String[]
+  descriptionRu       String[]
+  pdfUrl              String?
+  imageSrc            String
+  sectorItemServiceId Int
+  sectorItemService   SectorItemService @relation(fields: [sectorItemServiceId], references: [id])
+}
+
+model Section {
+  id        Int      @id @default(autoincrement())
+  section   String
+  data      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

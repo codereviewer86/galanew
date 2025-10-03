@@ -1,0 +1,49 @@
+services:
+  # Backend API Service
+  api:
+    image: dockercodereview/gala:api-latest
+    container_name: turkmen-api
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./Turkmen-gala-apis/logs:/app/logs
+      - ./Turkmen-gala-apis/uploads:/app/uploads
+    environment:
+      - DATABASE_URL=postgresql://neondb_owner:npg_z1jsbUcT7Pdp@ep-twilight-haze-aehcj9za-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+    networks:
+      - turkmen-network
+
+  # Frontend Website Service
+  website:
+    image: dockercodereview/gala:website-latest
+    container_name: turkmen-website
+    restart: unless-stopped
+    ports:
+      - "5001:80"
+    depends_on:
+      - api
+    networks:
+      - turkmen-network
+
+  # CMS Service
+  cms:
+    image: dockercodereview/gala:cms-latest
+    container_name: turkmen-cms
+    restart: unless-stopped
+    ports:
+      - "5002:80"
+    depends_on:
+      - api
+    networks:
+      - turkmen-network
+
+volumes:
+  api-logs:
+    driver: local
+  api-uploads:
+    driver: local
+
+networks:
+  turkmen-network:
+    driver: bridge
